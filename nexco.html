@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nexco Crypto Exchange</title>
-
+<link rel="stylesheet" href="css/nexc.css">
 </head>
   <style>
     
@@ -831,12 +831,37 @@ function loadUserData() {
     transactionHistory = userData.history || [];
     fundingBalance = userData.fundingBalance || 0;
     tradingBalance = userData.tradingBalance || 0;
-    
+  } else {
+    // Initialize with 1 ETH if no data exists
+    initialDeposit();
+  }
     // Update UI after loading data
     updateBalanceDisplay();
     updateAssetDistribution();
     renderUserAssets();
   }
+// Initialize with 1 ETH
+function initialDeposit() {
+  // Add 1 ETH to user assets
+  userAssets['ETH'] = 1;
+  
+  // Update funding account balance
+  const usdValue = 1 * coinPrices['ETH'];
+  fundingBalance = usdValue;
+  
+  // Add to transaction history
+  const transaction = {
+    type: 'Deposit',
+    coin: 'ETH',
+    amount: 1,
+    usdValue: usdValue,
+    account: 'Funding Account',
+    timestamp: new Date().toISOString()
+  };
+  transactionHistory.unshift(transaction);
+  
+  // Save the data
+  saveUserData();
 }
     
     // Core functionality
