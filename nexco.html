@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexco Crypto Exchange</title>
+<link rel="stylesheet" href="css/nexc.css">
+</head>
+<body>
+  <div class="header">
+    <div class="logo" onclick="showDashboard()">Nexco Exchange</div>
+    <div class="nav-menu">
+      <div class="nav-item" onclick="showDashboard()">Home</div>
+      <div class="nav-item" onclick="showAssets()">Assets</div>
+      <div class="nav-item">Markets</div>
+      <div class="nav-item">Trade</div>
+      <div class="nav-item">More</div>
+    </div>
+  </div>
+
+  
+  <div class="main-container">
+    <!-- Dashboard View -->
+    <div id="dashboard" class="dashboard active">
+      <!-- New Announcement Banner -->
+      <div class="announcement-banner1">
+        <div class="announcement-content1">
+          <span class="new-tag">NEW</span>
+          <span>PEPE2 is now listed on Nexco! Trade with 0% fees until April 15th.</span>
+        </div>
+        <span class="learn-more">Learn more</span>
+      </div>
+      
+      <!-- Balance Card with PNL -->
+      <div class="balance-card">
+        <div class="balance-title">Total Balance</div>
+        <div class="balance-amount" id="dashboard-total-balance">$0.00</div>
+        <div class="pnl-info">
+          <span class="pnl-positive">↑ 24h PNL: +$0.00 (+0.00%)</span>
+        </div>
+      </div>
+
+      <div class="action-buttons">
+        <button class="btn btn-primary" onclick="showDepositModal()">Deposit Crypto</button>
+        <button class="btn btn-secondary" onclick="showSendModal()">Send Crypto</button>
+        <button class="btn btn-secondary">Convert</button>
+        <button class="btn btn-secondary">Earn</button>
+      </div>
+      
+      <!-- Announcement Banner -->
+      <div class="announcement-banner">
+        <div class="announcement-content">
+          <span class="announcement-badge">NEW</span>
+          <span class="announcement-title">Spring Trading Competition - Win $100,000 in Prizes</span>
+        </div>
+        <span style="cursor: pointer;">→</span>
+      </div>
+      
+      <!-- Search bar -->
+      <div class="search-container">
+        <input type="text" class="search-input" placeholder="Search coins, markets...">
+        <span class="search-icon">🔍</span>
+      </div>
+      
+      <!-- Market Category Tabs -->
+      <div class="category-tabs">
+        <div class="category-tab active">All</div>
+        <div class="category-tab">Favorites</div>
+        <div class="category-tab">Top</div>
+        <div class="category-tab">Hot</div>
+        <div class="category-tab">New</div>
+        <div class="category-tab">Gainers</div>
+        <div class="category-tab">Memecoins</div>
+        <div class="category-tab">DeFi</div>
+        <div class="category-tab">GameFi</div>
+      </div>
+
+      <div class="section-title">
+        <span>Market Trends</span>
+        <span class="see-all">See All</span>
+      </div>
+      <div class="coin-list">
+        <div class="coin-item">
+          <div class="coin-name">
+            <div class="favorites-button">★</div>
+            <div class="coin-icon">BTC</div>
+            <div>
+              <div>Bitcoin</div>
+              <div style="font-size: 12px; color: #666;">BTC</div>
+            </div>
+          </div>
+          <div>
+            <div style="text-align: right;">$67,281.45</div>
+            <div style="font-size: 12px; color: green; text-align: right;">+2.4%</div>
+          </div>
+        </div>
+        <div class="coin-item">
+          <div class="coin-name">
+            <div class="favorites-button active">★</div>
+            <div class="coin-icon">ETH</div>
+            <div>
+              <div>Ethereum</div>
+              <div style="font-size: 12px; color: #666;">ETH</div>
+            </div>
+          </div>
+          <div>
+            <div style="text-align: right;">$3,852.71</div>
+            <div style="font-size: 12px; color: green; text-align: right;">+1.8%</div>
+          </div>
+        </div>
+        <div class="coin-item">
+          <div class="coin-name">
+            <div class="favorites-button">★</div>
+            <div class="coin-icon">SOL</div>
+            <div>
+              <div>Solana</div>
+              <div style="font-size: 12px; color: #666;">SOL</div>
+            </div>
+          </div>
+          <div>
+            <div style="text-align: right;">$125.68</div>
+            <div style="font-size: 12px; color: red; text-align: right;">-0.7%</div>
+          </div>
+        </div>
+        <div class="coin-item">
+          <div class="coin-name">
+            <div class="favorites-button">★</div>
+            <div class="coin-icon">PEPE</div>
+            <div>
+              <div>Pepe <span class="badge badge-new">NEW</span></div>
+              <div style="font-size: 12px; color: #666;">PEPE</div>
+            </div>
+          </div>
+          <div>
+            <div style="text-align: right;">$0.00000118</div>
+            <div style="font-size: 12px; color: green; text-align: right;">+14.6%</div>
+          </div>
+        </div>
+        <div class="coin-item">
+          <div class="coin-name">
+            <div class="favorites-button">★</div>
+            <div class="coin-icon">SHIB</div>
+            <div>
+              <div>Shiba Inu <span class="badge badge-hot">HOT</span></div>
+              <div style="font-size: 12px; color: #666;">SHIB</div>
+            </div>
+          </div>
+          <div>
+            <div style="text-align: right;">$0.00002354</div>
+            <div style="font-size: 12px; color: green; text-align: right;">+7.2%</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="section-title" style="margin-top: 30px;">
+        <span>New Listings</span>
+        <span class="see-all">See All</span>
+      </div>
+      <div class="coin-list">
+        <div class="coin-item">
+          <div class="coin-name">
+            <div class="favorites-button">★</div>
+            <div class="coin-icon">BOB</div>
+            <div>
+              <div>Bobs Token <span class="badge badge-new">NEW</span></div>
+              <div style="font-size: 12px; color: #666;">BOB</div>
+            </div>
+          </div>
+          <div>
+            <div style="text-align: right;">$2.45</div>
+            <div style="font-size: 12px; color: green; text-align: right;">+22.3%</div>
+          </div>
+        </div>
+        <div class="coin-item">
+          <div class="coin-name">
+            <div class="favorites-button">★</div>
+            <div class="coin-icon">MOG</div>
+            <div>
+              <div>Mog Coin <span class="badge badge-new">NEW</span></div>
+              <div style="font-size: 12px; color: #666;">MOG</div>
+            </div>
+          </div>
+          <div>
+            <div style="text-align: right;">$0.00004231</div>
+            <div style="font-size: 12px; color: green; text-align: right;">+18.7%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Assets View -->
+    <div id="assets" class="dashboard">
+      <div class="balance-card">
+        <div class="balance-title">Total Balance</div>
+        <div class="balance-amount" id="assets-total-balance">$0.00</div>
+        <div class="pnl-info">
+          <span class="pnl-positive">↑ 24h PNL: +$0.00 (+0.00%)</span>
+        </div>
+      </div>
+
+      <div class="action-buttons">
+        <button class="btn btn-primary" onclick="showDepositModal()">Deposit</button>
+        <button class="btn btn-secondary" onclick="showSendModal()">Withdraw</button>
+        <button class="btn btn-secondary">Transfer</button>
+        <button class="btn btn-secondary" onclick="showHistory()">History</button>
+      </div>
+
+      <div class="section-title">Asset Distribution</div>
+      <div class="asset-distribution">
+        <div class="distribution-item">
+          <div>Funding Account</div>
+          <div id="funding-balance">$0.00</div>
+        </div>
+        <div class="distribution-bar">
+          <div class="distribution-progress" id="funding-progress" style="width: 0%"></div>
+        </div>
+
+        <div class="distribution-item" style="margin-top: 15px;">
+          <div>Trading Account</div>
+          <div id="trading-balance">$0.00</div>
+        </div>
+        <div class="distribution-bar">
+          <div class="distribution-progress" id="trading-progress" style="width: 0%"></div>
+        </div>
+      </div>
+
+      <div class="section-title">My Assets</div>
+      <div class="coin-list" id="user-assets">
+        <div class="empty-state">No assets yet. Deposit crypto to get started.</div>
+      </div>
+    </div>
+
+    <!-- History View -->
+    <div id="history" class="dashboard">
+      <div class="section-title">Transaction History</div>
+      <div class="coin-list" id="history-list">
+        <div class="empty-state">No transaction history yet.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Deposit Modal -->
+  <div id="deposit-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title">Deposit Crypto</div>
+        <div class="close-modal" onclick="closeModal('deposit-modal')">&times;</div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Select Coin</label>
+        <select class="form-select" id="deposit-coin">
+          <option value="BTC">Bitcoin (BTC)</option>
+          <option value="ETH">Ethereum (ETH)</option>
+          <option value="USDT">Tether (USDT)</option>
+          <option value="SOL">Solana (SOL)</option>
+          <option value="DOGE">Dogecoin (DOGE)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Amount</label>
+        <input type="number" class="form-input" id="deposit-amount" placeholder="0.00">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Account</label>
+        <select class="form-select" id="deposit-account">
+          <option value="funding">Funding Account</option>
+          <option value="trading">Trading Account</option>
+        </select>
+      </div>
+      <button class="btn btn-primary" style="width: 100%" onclick="depositCrypto()">Deposit</button>
+    </div>
+  </div>
+
+  <!-- Send Modal -->
+  <div id="send-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title">Send Crypto</div>
+        <div class="close-modal" onclick="closeModal('send-modal')">&times;</div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Select Coin</label>
+        <select class="form-select" id="send-coin">
+          <option value="">Select a coin</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Amount</label>
+        <input type="number" class="form-input" id="send-amount" placeholder="0.00">
+      </div>
+      <div class="form-group">
+        <label class="form-label">From Account</label>
+        <select class="form-select" id="send-account">
+          <option value="funding">Funding Account</option>
+          <option value="trading">Trading Account</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Recipient Address</label>
+        <input type="text" class="form-input" placeholder="Enter address">
+      </div>
+      <button class="btn btn-primary" style="width: 100%" onclick="sendCrypto()">Send</button>
+    </div>
+  </div>
+
+  <script>
+    // Data storage
+    let userAssets = {};
+    let transactionHistory = [];
+    let fundingBalance = 0;
+    let tradingBalance = 0;
+    
+    // Coin price mapping (simulated)
+    const coinPrices = {
+      'BTC': 67281.45,
+      'ETH': 3852.71,
+      'USDT': 1.00,
+      'SOL': 125.68,
+      'DOGE': 0.173
+    };
+    
+    // Navigation functions
+    function showDashboard() {
+      document.getElementById('dashboard').classList.add('active');
+      document.getElementById('assets').classList.remove('active');
+      document.getElementById('history').classList.remove('active');
+      updateBalanceDisplay();
+    }
+    
+    function showAssets() {
+      document.getElementById('dashboard').classList.remove('active');
+      document.getElementById('assets').classList.add('active');
+      document.getElementById('history').classList.remove('active');
+      updateBalanceDisplay();
+      updateAssetDistribution();
+      renderUserAssets();
+    }
+    
+    function showHistory() {
+      document.getElementById('dashboard').classList.remove('active');
+      document.getElementById('assets').classList.remove('active');
+      document.getElementById('history').classList.add('active');
+      renderTransactionHistory();
+    }
+    
+    // Modal functions
+    function showDepositModal() {
+      document.getElementById('deposit-modal').classList.add('active');
+    }
+    
+    function showSendModal() {
+      const selectElement = document.getElementById('send-coin');
+      selectElement.innerHTML = '<option value="">Select a coin</option>';
+      
+      // Add user's available assets to dropdown
+      for (const [coin, amount] of Object.entries(userAssets)) {
+        if (amount > 0) {
+          const option = document.createElement('option');
+          option.value = coin;
+          option.textContent = `${coin} (${amount})`;
+          selectElement.appendChild(option);
+        }
+      }
+      
+      document.getElementById('send-modal').classList.add('active');
+    }
+    
+    function closeModal(modalId) {
+      document.getElementById(modalId).classList.remove('active');
+    }
+    // Save data to sessionStorage
+function saveUserData() {
+  const userData = {
+    assets: userAssets,
+    history: transactionHistory,
+    fundingBalance: fundingBalance,
+    tradingBalance: tradingBalance
+  };
+  sessionStorage.setItem('nexcoUserData', JSON.stringify(userData));
+}
+
+// Load data from sessionStorage
+function loadUserData() {
+  const storedData = sessionStorage.getItem('nexcoUserData');
+  if (storedData) {
+    const userData = JSON.parse(storedData);
+    userAssets = userData.assets || {};
+    transactionHistory = userData.history || [];
+    fundingBalance = userData.fundingBalance || 0;
+    tradingBalance = userData.tradingBalance || 0;
+    
+    // Update UI after loading data
+    updateBalanceDisplay();
+    updateAssetDistribution();
+    renderUserAssets();
+  }
+}
+    
+    // Core functionality
+    function depositCrypto() {
+      const coin = document.getElementById('deposit-coin').value;
+      const amount = parseFloat(document.getElementById('deposit-amount').value);
+      const account = document.getElementById('deposit-account').value;
+      
+      if (isNaN(amount) || amount <= 0) {
+        alert('Please enter a valid amount');
+        return;
+      }
+      
+      // Add to user assets
+      if (!userAssets[coin]) {
+        userAssets[coin] = 0;
+      }
+      userAssets[coin] += amount;
+      
+      // Update account balance
+      const usdValue = amount * coinPrices[coin];
+      if (account === 'funding') {
+        fundingBalance += usdValue;
+      } else {
+        tradingBalance += usdValue;
+      }
+      
+      // Add to transaction history
+      const transaction = {
+        type: 'Deposit',
+        coin: coin,
+        amount: amount,
+        usdValue: usdValue,
+        account: account === 'funding' ? 'Funding Account' : 'Trading Account',
+        timestamp: new Date().toISOString()
+      };
+      transactionHistory.unshift(transaction);
+      
+      // Update UI
+      updateBalanceDisplay();
+      closeModal('deposit-modal');
+      document.getElementById('deposit-amount').value = '';
+      
+      // Show success message
+      alert(`Successfully deposited ${amount} ${coin}`);
+
+      saveUserData();
+
+    }
+    function sendCrypto() {
+      const coin = document.getElementById('send-coin').value;
+      const amount = parseFloat(document.getElementById('send-amount').value);
+      const account = document.getElementById('send-account').value;
+      
+      if (!coin) {
+        alert('Please select a coin');
+        return;
+      }
+      
+      if (isNaN(amount) || amount <= 0) {
+        alert('Please enter a valid amount');
+        return;
+      }
+      
+      if (amount > userAssets[coin]) {
+        alert('Insufficient balance');
+        return;
+      }
+      
+      // Subtract from user assets
+      userAssets[coin] -= amount;
+      
+      // Update account balance
+      const usdValue = amount * coinPrices[coin];
+      if (account === 'funding') {
+        fundingBalance -= usdValue;
+      } else {
+        tradingBalance -= usdValue;
+      }
+      
+      // Add to transaction history
+      const transaction = {
+        type: 'Withdrawal',
+        coin: coin,
+        amount: amount,
+        usdValue: usdValue,
+        account: account === 'funding' ? 'Funding Account' : 'Trading Account',
+        timestamp: new Date().toISOString()
+      };
+      transactionHistory.unshift(transaction);
+      
+      // Update UI
+      updateBalanceDisplay();
+      closeModal('send-modal');
+      document.getElementById('send-amount').value = '';
+      
+      // Show success message
+      alert(`Successfully sent ${amount} ${coin}`);
+      saveUserData();
+    }
+    
+    
+    // UI update functions
+    function updateBalanceDisplay() {
+      const totalBalance = fundingBalance + tradingBalance;
+      document.getElementById('dashboard-total-balance').textContent = `$${totalBalance.toFixed(2)}`;
+      document.getElementById('assets-total-balance').textContent = `$${totalBalance.toFixed(2)}`;
+    }
+    
+    function updateAssetDistribution() {
+      const totalBalance = fundingBalance + tradingBalance;
+      
+      document.getElementById('funding-balance').textContent = `$${fundingBalance.toFixed(2)}`;
+      document.getElementById('trading-balance').textContent = `$${tradingBalance.toFixed(2)}`;
+      
+      if (totalBalance > 0) {
+        const fundingPercentage = (fundingBalance / totalBalance) * 100;
+        const tradingPercentage = (tradingBalance / totalBalance) * 100;
+        
+        document.getElementById('funding-progress').style.width = `${fundingPercentage}%`;
+        document.getElementById('trading-progress').style.width = `${tradingPercentage}%`;
+      } else {
+        document.getElementById('funding-progress').style.width = '0%';
+        document.getElementById('trading-progress').style.width = '0%';
+      }
+    }
+    
+    function renderUserAssets() {
+      const assetContainer = document.getElementById('user-assets');
+      
+      // Check if user has any assets
+      if (Object.keys(userAssets).length === 0 || Object.values(userAssets).every(value => value === 0)) {
+        assetContainer.innerHTML = '<div class="empty-state">No assets yet. Deposit crypto to get started.</div>';
+        return;
+      }
+      
+      // Clear container
+      assetContainer.innerHTML = '';
+      
+      // Add assets
+      for (const [coin, amount] of Object.entries(userAssets)) {
+        if (amount <= 0) continue;
+        
+        const usdValue = amount * coinPrices[coin];
+        
+        const assetItem = document.createElement('div');
+        assetItem.className = 'coin-item';
+        assetItem.innerHTML = `
+          <div class="coin-name">
+            <div class="coin-icon">${coin.substring(0, 3)}</div>
+            <div>
+              <div>${getCoinName(coin)}</div>
+              <div style="font-size: 12px; color: #666;">${coin}</div>
+            </div>
+          </div>
+          <div>
+            <div style="text-align: right;">${amount} ${coin}</div>
+            <div style="font-size: 12px; color: #666; text-align: right;">≈ $${usdValue.toFixed(2)}</div>
+          </div>
+        `;
+        
+        assetContainer.appendChild(assetItem);
+      }
+    }
+    
+    function renderTransactionHistory() {
+      const historyContainer = document.getElementById('history-list');
+      
+      // Check if user has any transaction history
+      if (transactionHistory.length === 0) {
+        historyContainer.innerHTML = '<div class="empty-state">No transaction history yet.</div>';
+        return;
+      }
+      
+      // Clear container
+      historyContainer.innerHTML = '';
+      
+      // Add transactions
+      for (const transaction of transactionHistory) {
+        const historyItem = document.createElement('div');
+        historyItem.className = 'history-item';
+        
+        const date = new Date(transaction.timestamp);
+        const formattedDate = `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
+        
+        historyItem.innerHTML = `
+          <div class="history-details">
+            <span class="history-type">${transaction.type} ${transaction.coin}</span>
+            <span class="history-amount">${transaction.amount} ${transaction.coin}</span>
+          </div>
+          <div class="history-details">
+            <span class="history-time">${formattedDate}</span>
+            <span class="history-time">${transaction.account}</span>
+          </div>
+        `;
+        
+        historyContainer.appendChild(historyItem);
+      }
+    }
+    
+    function getCoinName(symbol) {
+      const names = {
+        'BTC': 'Bitcoin',
+        'ETH': 'Ethereum',
+        'USDT': 'Tether',
+        'SOL': 'Solana',
+        'DOGE': 'Dogecoin'
+      };
+      return names[symbol] || symbol;
+    }
+    
+    // Initialize
+    updateBalanceDisplay();
+    window.addEventListener('load', loadUserData);
+  </script>
+</body>
+</html>
